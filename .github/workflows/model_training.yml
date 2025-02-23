@@ -44,3 +44,4 @@ jobs:
       with:
         name: models
         path: data/models/
+        retention-days: 1

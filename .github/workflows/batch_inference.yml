@@ -34,12 +34,17 @@ jobs:
         path: data/features/
         github-token: ${{ secrets.GITHUB_TOKEN }}
         run-id: ${{ github.event.workflow_run.id }}
+        retention-days: 1
+
     
     - name: Download model
       uses: actions/download-artifact@v4
       with:
         name: models
         path: data/models/
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
+        retention-days: 1
     
     - name: Generate predictions
       run: python src/inference_pipeline/predict.py
