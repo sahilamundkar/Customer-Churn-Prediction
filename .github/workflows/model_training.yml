@@ -11,6 +11,9 @@ on:
 jobs:
   train_model:
     runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      contents: read
     
     steps:
     - uses: actions/checkout@v4
@@ -30,6 +33,8 @@ jobs:
       with:
         name: features
         path: data/features/
+        github-token: ${{ secrets.GITHUB_TOKEN }}
+        run-id: ${{ github.event.workflow_run.id }}
     
     - name: Train model
       run: python src/model_pipeline/train.py
