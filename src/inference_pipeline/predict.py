@@ -26,7 +26,7 @@ class ChurnPredictor:
         feature_files = list(self.feature_path.glob("features_*.csv"))
         latest_file = max(feature_files, key=lambda x: x.stat().st_mtime)
         return pd.read_csv(latest_file)
-        
+
     def generate_predictions(self):
         """Generate and save predictions"""
         try:
@@ -34,9 +34,18 @@ class ChurnPredictor:
             model = self.load_latest_model()
             features = self.load_latest_features()
             
-            # Generate predictions
-            predictions = model.predict(features[model.feature_names_])
-            probabilities = model.predict_proba(features[model.feature_names_])
+            # Get feature names from training features
+            feature_names = [
+                'bounce_rate', 'pages_per_session',
+                'sessions', 'pageviews', 'dsls',
+                'visited_demo_page', 'visited_water_purifier_page',
+                'visited_vacuum_cleaner_page',
+                'help_me_buy_evt_count', 'phone_clicks_evt_count'
+            ]
+            
+            # Generate predictions using only the needed features
+            predictions = model.predict(features[feature_names])
+            probabilities = model.predict_proba(features[feature_names])
             
             # Create predictions DataFrame
             results = pd.DataFrame({
