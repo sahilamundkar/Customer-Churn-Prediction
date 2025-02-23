@@ -4,7 +4,7 @@ on:
     - cron: '0 1 * * *'  # Runs at 01:00 UTC daily (after feature pipeline)
   workflow_dispatch:
   workflow_run:
-    workflows: ["Model Training"]
+    workflows: ["Feature Pipeline", "Model Training"]
     types:
       - completed
 
@@ -34,7 +34,7 @@ jobs:
         path: data/features/
         github-token: ${{ secrets.GITHUB_TOKEN }}
         run-id: ${{ github.event.workflow_run.id }}
-        retention-days: 1
+        run-number: ${{ github.event.workflow_run.run_number }}
 
     
     - name: Download model
@@ -44,7 +44,7 @@ jobs:
         path: data/models/
         github-token: ${{ secrets.GITHUB_TOKEN }}
         repository: ${{ github.repository }}
-        retention-days: 1
+        run-number: ${{ github.event.workflow_run.run_number }}
     
     - name: Generate predictions
       run: python src/inference_pipeline/predict.py
