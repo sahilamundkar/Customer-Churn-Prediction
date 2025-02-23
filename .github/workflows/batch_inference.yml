@@ -33,6 +33,7 @@ jobs:
         name: features
         path: data/features/
         github-token: ${{ secrets.GITHUB_TOKEN }}
+        repository: ${{ github.repository }}
         run-id: ${{ github.event.workflow_run.id }}
     
     - name: Download model
