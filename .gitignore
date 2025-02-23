@@ -1,8 +1,8 @@
-# Data files
-data/raw/*.csv
-data/features/*.csv
-data/models/*.joblib
-data/models/*.txt
+# # Data files
+# data/raw/*.csv
+# data/features/*.csv
+# data/models/*.joblib
+# data/models/*.txt
 
 # Python
 __pycache__/
