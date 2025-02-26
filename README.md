@@ -18,7 +18,7 @@ For a typical business, reducing churn by just 5% can increase profits by 25-95%
 
 ## System Architecture
 
-![MLOps Architecture](docs/architecture_diagram.png)
+![architecture_diagram](https://github.com/user-attachments/assets/b4e3a937-3b08-4724-8fe5-d20fe69ad08f)
 
 The system implements a modern MLOps architecture with three main pipelines:
 
