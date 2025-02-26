@@ -153,10 +153,3 @@ The system is designed to run as GitHub Actions workflows, but can also be deplo
 - Explainable AI components for prediction interpretation
 - Data drift detection and monitoring
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
