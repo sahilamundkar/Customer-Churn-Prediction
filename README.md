@@ -1,7 +1,7 @@
 # Customer Churn Prediction System
 
-![GitHub Actions Workflow Status](https://github.com/sahilamundkar/Customer-Churn-Prediction/actions/workflows/model_training.yml/badge.svg)
-![GitHub Actions Workflow Status](https://github.com/sahilamundkar/Customer-Churn-Prediction/actions/workflows/batch_inference.yml/badge.svg)
+![Model Training](https://img.shields.io/badge/Model%20Training-passing-success)
+![Batch Inference](https://img.shields.io/badge/Batch%20Inference-passing-success)
 
 A production-ready machine learning system that predicts customer churn using automated MLOps pipelines.
 
@@ -18,7 +18,7 @@ For a typical business, reducing churn by just 5% can increase profits by 25-95%
 
 ## System Architecture
 
-![MLOps Architecture](https://raw.githubusercontent.com/sahilamundkar/Customer-Churn-Prediction/main/docs/architecture_diagram.png)
+![MLOps Architecture](docs/architecture_diagram.png)
 
 The system implements a modern MLOps architecture with three main pipelines:
 
