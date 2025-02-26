@@ -4,7 +4,7 @@ on:
     - cron: '0 1 * * *'  # Runs at 01:00 UTC daily (after feature pipeline)
   workflow_dispatch:
   workflow_run:
-    workflows: ["Model Training"]
+    workflows: ["Feature Pipeline"]
     types:
       - completed
 
@@ -27,31 +27,19 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     
-    # - name: Download features
-    #   uses: actions/download-artifact@v4
-    #   with:
-    #     name: features
-    #     path: data/features/
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     repository: ${{ github.repository }}
-    #     run-id: ${{ github.event.workflow_run.id }}
-    
-    # - name: Download model
-    #   uses: actions/download-artifact@v4
-    #   with:
-    #     name: models
-    #     path: data/models/
-    #     github-token: ${{ secrets.GITHUB_TOKEN }}
-    #     repository: ${{ github.repository }}
-    #     run-id: ${{ github.event.workflow_run.id }}
-
     - name: Download artifacts
       uses: actions/download-artifact@v4
       with:
         name: ml-artifacts
         path: data/
         github-token: ${{ secrets.GITHUB_TOKEN }}
-        run-id: ${{ github.event.workflow_run.id }}
+        merge-multiple: true
+    
+    - name: Download model
+      uses: actions/download-artifact@v4
+      with:
+        name: models
+        path: data/models/
     
     - name: Generate predictions
       run: python src/inference_pipeline/predict.py
